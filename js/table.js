@@ -8,7 +8,7 @@ let idCounter = 0;
 document.addEventListener( 'DOMContentLoaded', function () {
 
     // connect to websocket server
-    let socket = io.connect(serverURL);
+     socket = io.connect(serverURL);
 
     // ==========
     // Creating the table connection
@@ -19,7 +19,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
     // ==========
 
     // register card table socket
-    socket.emit('table-connect', "id123");
+    socket.emit('table-connect', tableId);
 
     // listen to phone movements
     socket.on('phone-move', phoneMoved);
@@ -38,7 +38,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
     // ==========
 
     // set the qrcode
-    create qr code("http://" + serverURL + "/?id=" + tableId, "placeholder");
+    qrCodeGenerator("http://" + serverURL + "/?id=" + tableId, "placeholder");
 
     // and the URL
     document.getElementById("url").innerHTML = "http://" + serverURL + "/?id=" + tableId;
